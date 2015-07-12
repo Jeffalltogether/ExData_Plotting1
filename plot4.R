@@ -36,9 +36,11 @@ with(data, plot(Times, Global_active_power, type = "l", ylab = "Global Active Po
 with(data, plot(Times, Voltage, type = "l", ylab = "Voltage", xlab = ""))
 
 with(data, {
-        plot(Times, Sub_metering_1, type = "l", ylab = "Energy Sub Metering", xlab = "")
+        plot(Times, Sub_metering_1, type = "l", ylab = "Energy sub metering", xlab = "", )
         lines(Times, Sub_metering_2, type = "l", col = "red")
         lines(Times, Sub_metering_3, type = "l", col = "blue")
+        legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
+               lty=c(1,1), lwd=c(2.5,2.5),col =c("black","red","blue"))
 })
 
 with(data, plot(Times, Global_reactive_power, type = "l", ylab = "Global_reactive_power", xlab = ""))

@@ -20,11 +20,15 @@ Times <- paste(EPC$Date,EPC$Time)  #combine data and time into one variabel
 Times <- strptime(Times, '%Y-%m-%d %H:%M:%S')   #format data and time 
 
 data <- data.frame(Times, as.numeric(EPC$Sub_metering_1), as.numeric(EPC$Sub_metering_2), as.numeric(EPC$Sub_metering_3))
+names <- c("Time", "Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
+colnames(data) <- names
 
 ## Plot 3
 with(data, {
-        plot(Times, as.numeric.EPC.Sub_metering_1., type = "l")
-        lines(Times, as.numeric.EPC.Sub_metering_2., type = "l", col = "red")
-        lines(Times, as.numeric.EPC.Sub_metering_3., type = "l", col = "blue")
+        plot(Times, Sub_metering_1, type = "l", ylab = "Energy sub metering", xlab = "", )
+        lines(Times, Sub_metering_2, type = "l", col = "red")
+        lines(Times, Sub_metering_3, type = "l", col = "blue")
+        legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
+               lty=c(1,1), lwd=c(2.5,2.5),col =c("black","red","blue"))
         })
 
