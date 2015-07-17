@@ -19,7 +19,7 @@ range(EPC$Date)
 Times <- paste(EPC$Date,EPC$Time)  #combine data and time into one variabel
 Times <- strptime(Times, '%Y-%m-%d %H:%M:%S')   #format data and time 
 
-data <- data.frame(Times, as.numeric(EPC$Sub_metering_1), as.numeric(EPC$Sub_metering_2), as.numeric(EPC$Sub_metering_3))
+data <- data.frame(Times, as.numeric(as.vector(EPC$Sub_metering_1)), as.numeric(as.vector(EPC$Sub_metering_2)), as.numeric(as.vector(EPC$Sub_metering_3)))
 names <- c("Time", "Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
 colnames(data) <- names
 
@@ -33,5 +33,5 @@ with(data, {
         })
 
 ## Copy plot to PNG
-dev.copy(png, file = "plot3.png")
+dev.copy(png, file = "plot3.png", width=480, height=480)
 dev.off()

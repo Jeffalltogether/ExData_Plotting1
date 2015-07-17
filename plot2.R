@@ -19,11 +19,11 @@ range(EPC$Date)
 Times <- paste(EPC$Date,EPC$Time)  #combine data and time into one variabel
 Times <- strptime(Times, '%Y-%m-%d %H:%M:%S')   #format data and time 
 
-data <- data.frame(Times, EPC$Global_active_power)
+data <- data.frame(Times, as.numeric(levels(EPC$Global_active_power))[as.integer(EPC$Global_active_power)])
 
 ## Plot 2
 plot(data, type = "l", ylab = "Global Active Power (kilowatts)", xlab = "", main = "Global Active Power")
 
 ## Copy plot to PNG
-dev.copy(png, file = "plot2.png")
+dev.copy(png, file = "plot2.png", width=480, height=480)
 dev.off()
